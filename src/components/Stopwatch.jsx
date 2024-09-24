@@ -10,7 +10,7 @@ function Stopwatch() {
         <span className="seconds">00</span>
       </div>
       <div className="action-btns">
-        <button className="stop">Stop</button>
+        <button className="start">Start</button>
         <button className="reset">Reset</button>
       </div>
     </div>
