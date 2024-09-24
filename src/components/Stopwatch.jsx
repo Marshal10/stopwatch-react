@@ -1,6 +1,9 @@
+import "./Stopwatch.css";
+
 function Stopwatch() {
   return (
     <div className="stopwatch">
+      <h1 className="title">Stopwatch</h1>
       <div className="timer">
         <span className="hours">00:</span>
         <span className="minutes">00:</span>
