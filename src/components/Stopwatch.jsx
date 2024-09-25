@@ -1,28 +1,30 @@
 import { useState } from "react";
 import "./Stopwatch.css";
 
+let timer;
 function Stopwatch() {
   const [isActive, setIsActive] = useState(false);
   const [mSeconds, setMSeconds] = useState(0);
-  let timer;
 
   function startTimer() {
-    setIsActive(true);
-    timer = setInterval(function () {
-      setMSeconds((prevSeconds) => {
-        if (prevSeconds < 59) {
-          return prevSeconds + 1;
-        } else {
-          return 0;
-        }
-      });
-    }, 1);
+    if (!isActive) {
+      setIsActive(true);
+      timer = setInterval(function () {
+        setMSeconds((prevSeconds) => {
+          if (prevSeconds < 59) {
+            return prevSeconds + 1;
+          } else {
+            return 0;
+          }
+        });
+      }, 1);
+    }
   }
 
   function stopTimer() {
-    setIsActive(false);
     clearInterval(timer);
     timer = null;
+    setIsActive(false);
   }
 
   return (
