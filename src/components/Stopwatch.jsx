@@ -5,19 +5,21 @@ let timer;
 function Stopwatch() {
   const [isActive, setIsActive] = useState(false);
   const [mSeconds, setMSeconds] = useState(0);
+  const [seconds, setSeconds] = useState(0);
 
   function startTimer() {
     if (!isActive) {
       setIsActive(true);
       timer = setInterval(function () {
         setMSeconds((prevSeconds) => {
-          if (prevSeconds < 59) {
+          if (prevSeconds < 99) {
             return prevSeconds + 1;
           } else {
+            handleSeconds();
             return 0;
           }
         });
-      }, 1);
+      }, 10);
     }
   }
 
@@ -27,12 +29,22 @@ function Stopwatch() {
     setIsActive(false);
   }
 
+  function handleSeconds() {
+    setSeconds((prevSeconds) => {
+      if (prevSeconds < 59) {
+        return prevSeconds + 1;
+      } else {
+        return 0;
+      }
+    });
+  }
+
   return (
     <div className="stopwatch">
       <h1 className="title">Stopwatch</h1>
       <div className="timer">
         <span className="minutes">00:</span>
-        <span className="seconds">00.</span>
+        <span className="seconds">{seconds.toString().padStart(2, "0")}.</span>
         <span className="m-seconds">
           {mSeconds.toString().padStart(2, "0")}
         </span>
