@@ -1,5 +1,8 @@
 import { useState } from "react";
 import "./Stopwatch.css";
+import Title from "./Title";
+import ActionBtns from "./ActionBtns";
+import Timer from "./Timer";
 
 let timer;
 function Stopwatch() {
@@ -53,23 +56,13 @@ function Stopwatch() {
 
   return (
     <div className="stopwatch">
-      <h1 className="title">Stopwatch</h1>
-      <div className="timer">
-        <span className="minutes">{minutes.toString().padStart(2, "0")}:</span>
-        <span className="seconds">{seconds.toString().padStart(2, "0")}.</span>
-        <span className="m-seconds">
-          {mSeconds.toString().padStart(2, "0")}
-        </span>
-      </div>
-      <div className="action-btns">
-        <button
-          className={`${isActive ? "stop" : "start"}`}
-          onClick={isActive ? stopTimer : startTimer}
-        >
-          {isActive ? "Stop" : "Start"}
-        </button>
-        <button className="reset">Reset</button>
-      </div>
+      <Title />
+      <Timer minutes={minutes} seconds={seconds} mSeconds={mSeconds} />
+      <ActionBtns
+        isActive={isActive}
+        startTimer={startTimer}
+        stopTimer={stopTimer}
+      />
     </div>
   );
 }
