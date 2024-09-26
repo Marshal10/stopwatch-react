@@ -54,6 +54,13 @@ function Stopwatch() {
     });
   }
 
+  function resetTimer() {
+    stopTimer();
+    setMinutes(0);
+    setSeconds(0);
+    setMSeconds(0);
+  }
+
   return (
     <div className="stopwatch">
       <Title />
@@ -62,6 +69,7 @@ function Stopwatch() {
         isActive={isActive}
         startTimer={startTimer}
         stopTimer={stopTimer}
+        resetTimer={resetTimer}
       />
     </div>
   );

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-function ActionBtns({ isActive, startTimer, stopTimer }) {
+function ActionBtns({ isActive, startTimer, stopTimer, resetTimer }) {
   return (
     <div className="action-btns">
       <button
@@ -8,7 +8,9 @@ function ActionBtns({ isActive, startTimer, stopTimer }) {
       >
         {isActive ? "Stop" : "Start"}
       </button>
-      <button className="reset">Reset</button>
+      <button className="reset" onClick={resetTimer}>
+        Reset
+      </button>
     </div>
   );
 }
