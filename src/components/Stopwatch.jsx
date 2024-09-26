@@ -6,6 +6,7 @@ function Stopwatch() {
   const [isActive, setIsActive] = useState(false);
   const [mSeconds, setMSeconds] = useState(0);
   const [seconds, setSeconds] = useState(0);
+  const [minutes, setMinutes] = useState(0);
 
   function startTimer() {
     if (!isActive) {
@@ -34,6 +35,17 @@ function Stopwatch() {
       if (prevSeconds < 59) {
         return prevSeconds + 1;
       } else {
+        handleMinutes();
+        return 0;
+      }
+    });
+  }
+
+  function handleMinutes() {
+    setMinutes((prevMins) => {
+      if (prevMins < 59) {
+        return prevMins + 1;
+      } else {
         return 0;
       }
     });
@@ -43,7 +55,7 @@ function Stopwatch() {
     <div className="stopwatch">
       <h1 className="title">Stopwatch</h1>
       <div className="timer">
-        <span className="minutes">00:</span>
+        <span className="minutes">{minutes.toString().padStart(2, "0")}:</span>
         <span className="seconds">{seconds.toString().padStart(2, "0")}.</span>
         <span className="m-seconds">
           {mSeconds.toString().padStart(2, "0")}
